@@ -3,7 +3,7 @@
 Welcome to my personal developer portfolio.  
 This website showcases who I am, what I build, and the technology stack I work with — wrapped inside a clean, modern UI built with **React, Vite, and Tailwind CSS**.
 
-Live Portfolio: 
+## Live Portfolio: 
 
 ---
 
@@ -115,8 +115,3 @@ A React-based digital banking simulation built with clean, modern UI.
 GitHub: https://github.com/tusshar-25/VentureWise
 
 ---
-
-## 🖼️ Screenshots
-
-(Add your screenshots in `/screenshots` folder and link below)
-
