@@ -3,7 +3,7 @@
 Welcome to my personal developer portfolio.  
 This website showcases who I am, what I build, and the technology stack I work with — wrapped inside a clean, modern UI built with **React, Vite, and Tailwind CSS**.
 
-## Live Portfolio: 
+## Live Portfolio: https://tusharsverse.onrender.com
 
 ---
 
