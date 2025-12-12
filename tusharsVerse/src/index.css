@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(226, 232, 255, 0.95);
+  box-shadow: 0 0 14px rgba(191, 219, 254, 0.95);
+  opacity: 0.2;
+  animation: starBlink 3.5s ease-in-out infinite alternate;
+}
+
+.star-dot:nth-child(1) {
+  top: 18%;
+  right: 10%;
+  animation-delay: 0s;
+}
+
+.star-dot:nth-child(2) {
+  top: 35%;
+  left: 20%;
+  animation-delay: 0.9s;
+}
+
+.star-dot:nth-child(3) {
+  top: 8%;
+  left: 55%;
+  animation-delay: 1.7s;
+}
+
+.star-dot:nth-child(4) {
+  bottom: 15%;
+  right: 25%;
+  animation-delay: 2.4s;
+}
+
+@keyframes starBlink {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.15;
+    transform: scale(0.9);
+  }
+}
+
+.heroStars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 70%) 85% 25%,
+    radial-gradient(circle, rgba(180,220,255,0.8) 0%, transparent 75%) 25% 75%;
+
+  background-size: 6px 6px, 4px 4px;
+  animation: heroBlink 4s ease-in-out infinite alternate;
+  opacity: 0.5;
+}
+
+@keyframes heroBlink {
+  0%   { opacity: 0.1; }
+  50%  { opacity: 0.7; }
+  100% { opacity: 0.1; }
+}
