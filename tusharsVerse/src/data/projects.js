@@ -95,4 +95,40 @@ export const projects = [
       },
     ],
   },
+
+  {
+    id: "ketra",
+    name: "KeTRA",
+    tag: "Fullstack · Trading Simulation Platform",
+    role: "Fullstack Developer",
+    stack: [
+      "React 19",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Tailwind CSS",
+      "Framer Motion",
+      "JWT",
+      "Yahoo Finance API",
+    ],
+    description:
+      "A modern full-stack trading simulation platform designed to help users learn stock trading, IPO investments, and portfolio management using virtual money in a risk-free environment.",
+    highlight:
+      "Real-time market data from Yahoo Finance API, animated welcome experience, market hours logic, accelerated IPO system, and professional gradient-based UI with smooth animations.",
+    liveUrl: "https://ketra-main.onrender.com",
+    repoUrl: "https://github.com/tusshar-25/KeTRA",
+    demoCredentials: [
+      {
+        label: "New User Registration",
+        email: "Register with any email/password",
+        password: "Virtual funds provided automatically",
+      },
+    ],
+    extraLinks: [
+      {
+        label: "Backend API (Render)",
+        url: "https://ketra.onrender.com",
+      },
+    ],
+  },
 ];
