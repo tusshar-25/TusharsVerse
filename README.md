@@ -84,7 +84,6 @@ A modern full-stack trading simulation platform designed to help users learn sto
 - Market hours logic and trading simulation
 - Account creation and portfolio management
 
-Live Demo: https://ketra-main.onrender.com  
 GitHub: https://github.com/tusshar-25/KeTRA
 
 ---
