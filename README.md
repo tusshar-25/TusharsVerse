@@ -73,7 +73,23 @@ Alongside my BSc studies, I consistently work on improving my engineering skills
 
 ## 💼 Featured Projects (Showcased in Portfolio)
 
-### **1) Workly Pro — Workforce Management System**
+### **1) KeTRA — Trading Simulation Platform**
+A modern full-stack trading simulation platform designed to help users learn stock trading and portfolio management using virtual money.
+
+**Features:**
+- Real-time market data from Yahoo Finance API
+- Risk-free trading environment with virtual funds
+- IPO investment system with accelerated timelines
+- Professional gradient-based UI with smooth animations
+- Market hours logic and trading simulation
+- Account creation and portfolio management
+
+Live Demo: https://ketra-main.onrender.com  
+GitHub: https://github.com/tusshar-25/KeTRA
+
+---
+
+### **2) Workly Pro — Workforce Management System**
 A full-stack dashboard application with separate Admin & Employee views.
 
 **Features:**
@@ -88,7 +104,7 @@ GitHub: https://github.com/tusshar-25/Workly-Pro
 
 ---
 
-### **2) WanderLust — Travel Listing Platform**
+### **3) WanderLust — Travel Listing Platform**
 A full-stack application using Node, Express, MongoDB & EJS.
 
 **Features:**
@@ -102,7 +118,7 @@ GitHub: https://github.com/tusshar-25/WanderLust
 
 ---
 
-### **3) VentureWise — Modern Banking UI**
+### **4) VentureWise — Modern Banking UI**
 A React-based digital banking simulation built with clean, modern UI.
 
 **Features:**
