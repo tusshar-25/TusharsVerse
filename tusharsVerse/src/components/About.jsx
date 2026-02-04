@@ -1,13 +1,96 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
+// Simple useInView implementation
+const useInView = (options = {}) => {
+  const [ref, setRef] = useState(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!ref) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      {
+        threshold: options.threshold || 0,
+        triggerOnce: options.triggerOnce || false,
+        rootMargin: options.rootMargin || '0px',
+      }
+    );
+
+    observer.observe(ref);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [ref, options.threshold, options.triggerOnce, options.rootMargin]);
+
+  return [setRef, inView];
+};
 
 const About = () => {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: -30 
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <section
+      ref={ref}
       id="about"
-      className="pt-6 pb-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+      className="pt-16 sm:pt-20 lg:pt-24 pb-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-black via-slate-950 to-black"
     >
-      <div
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        {/* Gradient Orbs - Enhanced Purple */}
+        <div
+          className="absolute top-0 left-0 w-96 h-96 bg-purple-600/20 rounded-full filter blur-3xl animate-pulse"
+        />
+        <div
+          className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full filter blur-3xl animate-pulse"
+        />
+        
+        {/* Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-10" 
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='rgba(139,92,246,0.1)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)' /%3E%3C/svg%3E")`
+          }}
+        />
+      </div>
+      
+      {/* Content */}
+      <motion.div
         className="
+        relative z-10
         rounded-3xl
         bg-white/5
         backdrop-blur-xl
@@ -16,9 +99,15 @@ const About = () => {
         px-6 py-7 sm:px-8 sm:py-8
         grid gap-6 md:grid-cols-[2fr,1.3fr]
       "
+        variants={containerVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
       >
         {/* Left: Summary */}
-        <div className="space-y-3">
+        <motion.div 
+          className="space-y-3"
+          variants={itemVariants}
+        >
           <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
             About me
           </p>
@@ -35,6 +124,7 @@ const About = () => {
 
           <p className="text-sm text-slate-300 leading-relaxed">
             Alongside my BSc studies, I&apos;ve built complete apps like{" "}
+            <span className="text-sky-300">KeTRA</span>,{" "}
             <span className="text-sky-300">Workly Pro</span>,{" "}
             <span className="text-sky-300">WanderLust</span> and{" "}
             <span className="text-sky-300">VentureWise</span>, focusing on real
@@ -47,10 +137,13 @@ const About = () => {
             more real-world projects, learning better patterns and writing code
             that&apos;s both readable and scalable.
           </p>
-        </div>
+        </motion.div>
 
         {/* Right: Quick facts */}
-        <div className="space-y-4">
+        <motion.div 
+          className="space-y-4"
+          variants={itemVariants}
+        >
           <div className="rounded-2xl bg-slate-900/70 border border-slate-700 px-4 py-4">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
               At a glance
@@ -58,8 +151,8 @@ const About = () => {
             <ul className="mt-2 space-y-1.5 text-sm text-slate-200">
               <li>• React & full-stack JavaScript focused</li>
               <li>• Comfortable with MERN, UI libraries & auth flows</li>
-              <li>• Built 3 major apps from scratch</li>
-              <li>• Enjoy dashboards, booking flows & admin panels</li>
+              <li>• Built 4 major apps from scratch</li>
+              <li>• Enjoy dashboards, trading platforms & admin panels</li>
             </ul>
           </div>
 
@@ -68,13 +161,14 @@ const About = () => {
               Currently
             </p>
             <ul className="mt-2 space-y-1.5 text-sm text-slate-200">
+              <li>• Developing KeTRA trading platform</li>
               <li>• Refining Workly Pro and WanderLust</li>
               <li>• Exploring better UI patterns & animations</li>
               <li>• Preparing for future internships & roles</li>
             </ul>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
